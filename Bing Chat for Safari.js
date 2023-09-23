@@ -12,7 +12,7 @@ if (navigator.userAgent === USER_AGENT_STRING) {
 }
 
 const getWaitList = () => new Promise((resolve) => {
-    const ID = "#waitListDefault"
+    const ID = "#waitListDefaultPayWall"
     let element = document.querySelector(ID);
 
     if (!!element) {
@@ -41,29 +41,37 @@ const getWaitList = () => new Promise((resolve) => {
 
 (async () => {
     const waitList = await getWaitList();
-
+    
     // change text
     const title = waitList.querySelector(".contentContainer .title");
-    title.innerText = "Unlock conversational search on Safari"
+    title.innerText = "Unlock conversational search on Safari";
+    
+    // change description
+    const description = waitList.querySelector(".contentContainer .description");
+    description.innerText = "In order to use Bing Chat in Safari, you have to replace the User Agent of the current tab.";
+    // how to edit ua string
+    const list = document.createElement("ol");
+    const listItems = Array.from({ length: 3 }).map((item) => document.createElement("li"));
+    listItems[0].innerText = "Press the button to copy Microsoft Edge's User Agent";
+    listItems[1].innerText = "Open Develop → User Agent → Other… from the menu bar";
+    listItems[2].innerText = "Replace the text with the contents of your clipboard";
+    listItems.forEach((item) => {
+        item.style.listStyle = "decimal";
+        item.style.marginLeft = "2em";
+        list.appendChild(item);
+    });
+    list.style.fontSize = ".9em";
+    description.appendChild(list);
 
-    const link = waitList.querySelector(".actionContainer .link.secondary.fixed");
-    link.querySelector("span").innerText = "Emulate Microsoft Edge";
+    // edit button
+    const link = waitList.querySelector("#codexMacPrimaryButton");
+    link.ariaLabel = link.querySelector("span").innerText = "Emulate Microsoft Edge";
     link.href = "";
 
-    // how to change ua string
-    const hint = document.createElement("div");
-    hint.classList.add("actionContainer");
-    hint.innerText = "Copied Microsoft Edge's User Agent!\nUse it in the current tab by selecting Develop > User Agent > Other… from the menu bar. Replace the old User Agent with the one in your clipboard and press OK."
-    hint.hidden = true;
-    waitList.appendChild(hint);
-
-    // show hint and copy ua string
+    // copy ua string
     link.addEventListener("click", (event) => {
         event.preventDefault();
-
-        navigator.clipboard.writeText(USER_AGENT_STRING)
-        hint.hidden = false
-        
+        navigator.clipboard.writeText(USER_AGENT_STRING);
         return false;
-    })
-})()
+    });
+})();
