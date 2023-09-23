@@ -1,5 +1,5 @@
 # Bing Chat for Safari
-<img width="1552" alt="image" src="https://user-images.githubusercontent.com/42516330/230647333-23dc7342-23f9-4466-98c5-fdc4d4adf0bb.png">
+<img width="1552" alt="User Agent string replacement prompt" src="https://github.com/mxmlndml/bing-chat-for-safari/assets/42516330/014742a7-fd17-4f21-8207-90dab11cac92">
 
 If you want to use Bing Chat in Safari you are prompted to download Microsoft Edge in order to proceed. This userscript replaces this prompt with a guide on how to replace your User Agent string. If you follow the steps you are able to use Bing Chat in Safari without downloading Microsoft Edge.
 
@@ -13,4 +13,4 @@ If you want to use Bing Chat in Safari you are prompted to download Microsoft Ed
 
 **⚠️  If you open Bing Chat in a different tab you have to change the User Agent again**
 
-<img width="1552" alt="image" src="https://user-images.githubusercontent.com/42516330/230650403-c3b37c79-0d05-4722-aba2-8496ce42a0c2.png">
+<img width="1552" alt="Bing AI in Safari" src="https://github.com/mxmlndml/bing-chat-for-safari/assets/42516330/463768ff-bcff-4934-adc8-4c782d938df6">
